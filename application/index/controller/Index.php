@@ -118,8 +118,8 @@ class Index extends Controller
         curl_setopt($ch,CURLOPT_URL,$url);
         curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
         $output = curl_exec($ch);
-        if(curl_error($ch)){
-            var_dump(curl_error($ch));
+        if(curl_errno($ch)){
+            var_dump(curl_errno($ch));
         }
         curl_close($ch);
         var_dump(json_decode($output,true));
@@ -134,8 +134,8 @@ class Index extends Controller
         curl_setopt($ch,CURLOPT_URL,$url);
         curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
         $output = curl_exec($ch);
-        if(curl_error($ch)){
-            var_dump(curl_error($ch));
+        if(curl_errno($ch)){
+            var_dump(curl_errno($ch));
         }
         curl_close($ch);
         var_dump(json_decode($output,true));
