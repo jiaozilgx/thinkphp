@@ -10,7 +10,7 @@ class Index extends Controller
         // 验证
         $timestamp = $_GET['timestamp'];
         $nonce = $_GET['nonce'];
-        $token = 'jiaozilgx';
+        $token = "jiaozilgx";
         $signature = $_GET['signature'];
         $validate = [$timestamp,$nonce,$token];
         sort($validate);
@@ -19,5 +19,10 @@ class Index extends Controller
             echo $_GET['echostr'];
             exit;
         }
+    }
+
+    public function show()
+    {
+        return 'ssss';
     }
 }
