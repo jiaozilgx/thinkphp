@@ -5,17 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{block name="title"}{/block}</title>
-    <link href="__STATIC__/css/bootstrap.min.css" rel="stylesheet">
-    {block name="css"}{/blcok}
+    {css href="/static/css/bootstrap.min.css"}
+    {block name="css"}{/block}
     <!--[if lt IE 9]>
-    <script src="__STATIC__/js/html5shiv.min.js"></script>
-    <script src="__STATIC__/js/respond.min.js"></script>
+    {js href="/static/js/html5shiv.min.js"}
+    {js href="/static/js/respond.min.js"}
     <![endif]-->
 </head>
 <body>
 {block name="body"}{/block}
-<script src="__STATIC__/js/jquery.min.js"></script>
-<script src="__STATIC__/js/bootstrap.min.js"></script>
+{js href="/static/js/jquery.min.js"}
+{js href="/static/js/bootstrap.min.js"}
 {block name="js"}{/block}
 </body>
 </html>
