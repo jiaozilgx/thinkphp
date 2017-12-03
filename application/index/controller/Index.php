@@ -52,30 +52,27 @@ class Index extends Controller
                 echo sprintf($template,$toUser,$fromUser,$createTime,$msgType,$content);
             }
         }
+
+        if(strtolower($postObj->MsgType) == 'text'){
+            // 判断输入的内容
+            if(strtolower($postObj->Content) == '饺子'){
+                $template = '<xml>
+                                <ToUserName><![CDATA[%s]]></ToUserName>
+                                <FromUserName><![CDATA[%s]]></FromUserName>
+                                <CreateTime>%s</CreateTime>
+                                <MsgType><![CDATA[%s]]></MsgType>
+                                <Content><![CDATA[%s]]></Content>
+                            </xml>';
+                $toUser = $postObj->FromUserName;
+                $fromUser = $postObj->ToUserName;
+                $createTime = time();
+                $msgType = 'text';
+                $content = '我就是饺子！';
+                // 返回一个格式化字符串
+                echo sprintf($template,$toUser,$fromUser,$createTime,$msgType,$content);
+            }
+        }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     public function show()
     {
