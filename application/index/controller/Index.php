@@ -10,12 +10,15 @@ class Index extends Controller
         // 验证
         $timestamp = $_GET['timestamp'];
         $nonce = $_GET['nonce'];
-        $token = "jiaozilgx";
+        $token = 'jiaozilgx';
         $signature = $_GET['signature'];
-        $validate = [$timestamp,$nonce,$token];
-        sort($validate);
-        $str = sha1(implode('',$validate));
-        if($str == $signature){
+
+        $array = [$timestamp,$nonce,$token];
+        sort($array);
+        $tmp = implode('',$array);
+        $tmp = sha1($tmp);
+
+        if($tmp == $signature){
             echo $_GET['echostr'];
             exit;
         }
