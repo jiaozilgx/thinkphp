@@ -68,7 +68,9 @@ class Index extends Controller
                 case '电话':
                     $content = '17671785130';
                     break;
-
+                case '百度':
+                    $content = '<a href="www.baidu.com">百度</a>';
+                    break;
             }
             $template = '<xml>
                                 <ToUserName><![CDATA[%s]]></ToUserName>
