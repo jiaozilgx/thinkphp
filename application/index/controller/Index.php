@@ -53,6 +53,7 @@ class Index extends Controller
             }
         }
 
+        // 回复单文本
         if(strtolower($postObj->MsgType) == 'text'){
             // 判断输入的内容
             switch(strtolower($postObj->Content) ){
@@ -91,5 +92,16 @@ class Index extends Controller
     public function show()
     {
         return view('index');
+    }
+
+    // 使用curl
+    public function http_curl()
+    {
+        $ch = curl_init();
+        curl_setopt($ch,CURLOPT_URL,'www.baidu.com');
+        curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
+        $output = curl_exec($ch);
+        curl_close($ch);
+        echo $output;
     }
 }
