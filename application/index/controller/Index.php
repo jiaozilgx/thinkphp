@@ -14,7 +14,7 @@ class Index extends Controller
         $signature = $_GET['signature'];
         $validate = [$timestamp,$nonce,$token];
         sort($validate);
-        $str = sha1(implode($validate));
+        $str = sha1(implode('',$validate));
         if($str == $signature){
             echo $_GET['echostr'];
             exit;
