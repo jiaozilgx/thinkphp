@@ -5,6 +5,6 @@ class Index
 {
     public function index()
     {
-        return 'Hello ThinkPHP';
+        return view("index");
     }
 }
