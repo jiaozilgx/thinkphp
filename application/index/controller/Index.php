@@ -72,6 +72,9 @@ class Index extends Controller
                 case '百度':
                     $content = '<a href="www.baidu.com">百度</a>';
                     break;
+                default:
+                    $content = 'Welcome!';
+                    break;
             }
             $template = '<xml>
                                 <ToUserName><![CDATA[%s]]></ToUserName>
@@ -102,6 +105,55 @@ class Index extends Controller
         curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
         $output = curl_exec($ch);
         curl_close($ch);
-        echo $output;
+        var_dump($output);
     }
+
+    // 获取access_token
+    public function getAccessToken()
+    {
+        $appid = 'wxc6e10e26f39c5c0c';
+        $appsecret = '44a6a448634755f603105ffa8778bfa0';
+        $url = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='.$appid.'&secret='.$appsecret;
+        $ch = curl_init();
+        curl_setopt($ch,CURLOPT_URL,$url);
+        curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
+        $output = curl_exec($ch);
+        curl_close($ch);
+        if(curl_errno($ch)){
+            var_dump(curl_errno($ch));
+        }
+        var_dump(json_decode($output,true));
+    }
+
+    // 获取微信服务器IP
+    public function getWeChatServerIP()
+    {
+        $access_token = '';
+        $url = 'https://api.weixin.qq.com/cgi-bin/getcallbackip?access_token='.$access_token;
+        $ch = curl_init();
+        curl_setopt($ch,CURLOPT_URL,$url);
+        curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
+        $output = curl_exec($ch);
+        curl_close($ch);
+        if(curl_errno($ch)){
+            var_dump(curl_errno($ch));
+        }
+        var_dump(json_decode($output,true));
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
