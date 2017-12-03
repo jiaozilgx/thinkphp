@@ -55,22 +55,34 @@ class Index extends Controller
 
         if(strtolower($postObj->MsgType) == 'text'){
             // 判断输入的内容
-            if(strtolower($postObj->Content) == '饺子'){
-                $template = '<xml>
+            switch(strtolower($postObj->Content) ){
+                case '饺子':
+                    $content = '我就是饺子！';
+                    break;
+                case '名字':
+                    $content = '刘官翔';
+                    break;
+                case '性别':
+                    $content = '男';
+                    break;
+                case '电话':
+                    $content = '17671785130';
+                    break;
+
+            }
+            $template = '<xml>
                                 <ToUserName><![CDATA[%s]]></ToUserName>
                                 <FromUserName><![CDATA[%s]]></FromUserName>
                                 <CreateTime>%s</CreateTime>
                                 <MsgType><![CDATA[%s]]></MsgType>
                                 <Content><![CDATA[%s]]></Content>
                             </xml>';
-                $toUser = $postObj->FromUserName;
-                $fromUser = $postObj->ToUserName;
-                $createTime = time();
-                $msgType = 'text';
-                $content = '我就是饺子！';
-                // 返回一个格式化字符串
-                echo sprintf($template,$toUser,$fromUser,$createTime,$msgType,$content);
-            }
+            $toUser = $postObj->FromUserName;
+            $fromUser = $postObj->ToUserName;
+            $createTime = time();
+            $msgType = 'text';
+            // 返回一个格式化字符串
+            echo sprintf($template,$toUser,$fromUser,$createTime,$msgType,$content);
         }
     }
 
