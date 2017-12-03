@@ -128,7 +128,7 @@ class Index extends Controller
     // 获取微信服务器IP
     public function getWeChatServerIP()
     {
-        $access_token = '';
+        $access_token = 'R-dXJZJvU3pad9VU5SCepIxm3TKy0ZaT5gDnKmsaHb5C64AFpuaiMETT1zaURDI5WorPgaLKkElRtm0xfpDc3jG6NxCn2CoATznls-oQyP7f66IX4ed7KSz-0mikOHNRLRDbAFAOUG';
         $url = 'https://api.weixin.qq.com/cgi-bin/getcallbackip?access_token='.$access_token;
         $ch = curl_init();
         curl_setopt($ch,CURLOPT_URL,$url);
