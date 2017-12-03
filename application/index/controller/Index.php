@@ -26,6 +26,6 @@ class Index extends Controller
 
     public function show()
     {
-        return 'ssss';
+        return view('index');
     }
 }
