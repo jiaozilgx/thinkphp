@@ -132,7 +132,7 @@ class WeChat extends Controller
      */
     public function getAccessToken()
     {
-        if(isset($_SESSION['access_token']) && $_SESSION['expire_time']>time()){
+        if(isset($_SESSION['access_token']) && $_SESSION['expires_in']>time()){
             return $_SESSION['access_token'];
         } else {
             $appid = 'wx13112e8c1539ced8';
@@ -142,7 +142,7 @@ class WeChat extends Controller
             $access_token = $res['access_token'];
 
             $_SESSION['access_token'] = $access_token;
-            $_SESSION['expire_time'] = time()+7000;
+            $_SESSION['expires_in'] = time()+7000;
             return $access_token;
         }
     }
