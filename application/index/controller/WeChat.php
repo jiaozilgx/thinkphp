@@ -189,8 +189,24 @@ class WeChat extends Controller
         var_dump($res);
     }
 
-
-
+    /**
+     * 群发接口
+     */
+    public function sendMsgALL()
+    {
+        $access_token = $this->getAccessToken();
+        $url = 'https://api.weixin.qq.com/cgi-bin/message/mass/preview?access_token='.$access_token;
+        $msg = array(
+            'touser' => 'oZf3H0f7HNuXj0UZhipDQQW3UA2k',
+            'mpnews' => [
+                'media_id' => '123dsdajkasd231jhksad',
+            ],
+            'msgtype' => 'mpnews'
+        );
+        $postJson = json_encode($msg);
+        $res = $this->http_curl($url,'post','json',$postJson);
+        var_dump($res);
+    }
 
 
 

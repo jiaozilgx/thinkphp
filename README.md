@@ -158,12 +158,18 @@ ThinkPHP® 商标和著作权所有者为上海顶想信息科技有限公司。
         + 转换成json数据，json_encode()
         + 再用urldecode()将URL编码的字符串解码
     2) 对于中文显示乱码的问题
-        + 在开头用header('content-type:text/html;charset=utf-8')    
+        + 在开头用header('content-type:text/html;charset=utf-8') 
+        
+3.自定义点击事件
 
+**、群发接口**
 
+1.注意：
 
-
-
+    + 群发接口的调用有限制
+    + 开发时用预览接口
+    + 开发好后再用根据openID列表群发
+    + openID列表就是关注公众号的用户微信号列表
 
 
 
