@@ -117,13 +117,12 @@ class WeChat extends Controller
             curl_setopt($ch,CURLOPT_POSTFIELDS,$arr);
         }
         $optput = curl_exec($ch);
-        curl_close();
+        if(curl_errno($ch)){
+            return curl_error($ch);
+        }
+        curl_close($ch);
         if($res == 'json'){
-            if(curl_errno($ch)){
-                return curl_error($ch);
-            } else {
-                return json_decode($optput,true);
-            }
+            return json_decode($optput,true);
         }
     }
 
@@ -133,7 +132,7 @@ class WeChat extends Controller
      */
     public function getAccessToken()
     {
-        if($_SESSION['access_token'] && $_SESSION['expire_time']>time()){
+        if(isset($_SESSION['access_token']) && $_SESSION['expire_time']>time()){
             return $_SESSION['access_token'];
         } else {
             $appid = 'wx13112e8c1539ced8';
@@ -181,7 +180,7 @@ class WeChat extends Controller
                 [
                     'name' => urlencode('阿里云'),
                     'type' => 'view',
-                    'key' => 'http://120.79.3.110',
+                    'url' => 'http://120.79.3.110',
                 ]
             ],
         );
