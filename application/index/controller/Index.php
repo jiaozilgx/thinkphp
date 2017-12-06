@@ -18,7 +18,7 @@ class Index extends Controller
         $tmp = implode('',$array);
         $tmp = sha1($tmp);
 
-        if($tmp == $signature&&$$_GET['echostr']){
+        if($tmp == $signature&&$_GET['echostr']){
             echo $_GET['echostr'];
             exit;
         } else {
