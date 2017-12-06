@@ -216,7 +216,7 @@ class WeChat extends Controller
         $appid = 'wx13112e8c1539ced8';
         $redirect_url = urlencode('http://120.79.3.110/thinkphp/public/index.php/index/we_chat/getUserBaseInfo');
         $url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='.$appid.'&redirect_uri='.$redirect_url.'&response_type=code&scope=snsapi_base&state=123#wechat_redirect';
-        header('location:'.$url);
+        header('Location: '.$url);
     }
 
     public function getUserBaseInfo()
@@ -234,7 +234,7 @@ class WeChat extends Controller
         $appid = 'wx13112e8c1539ced8';
         $redirect_url = urlencode('http://120.79.3.110/thinkphp/public/index.php/index/we_chat/getUserDetailInfo');
         $url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='.$appid.'&redirect_uri='.$redirect_url.'&response_type=code&scope=snsapi_userinfo&state=123#wechat_redirect';
-        header('location:'.$url);
+        header('Location: '.$url);
     }
 
     public function getUserDetailInfo()
