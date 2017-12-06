@@ -139,7 +139,14 @@ ThinkPHP® 商标和著作权所有者为上海顶想信息科技有限公司。
     + 一级菜单最多3个，二级菜单最多5个
     + 一级菜单最多4个汉字，二级菜单最多7个汉字，多的以"..."代替
 
+2.问题：
 
+    1) 对于中文转换成json数据会报错
+        + 用urlencode()将中文以URL编码
+        + 转换成json数据，json_encode()
+        + 再用urldecode()将URL编码的字符串解码
+    2) 对于中文显示乱码的问题
+        + 在开头用header('content-type:text/html;charset=utf-8')    
 
 
 
