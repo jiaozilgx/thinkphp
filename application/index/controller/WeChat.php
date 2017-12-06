@@ -251,6 +251,33 @@ class WeChat extends Controller
         var_dump($res);
     }
 
+    /**
+     * 模板消息接口
+     */
+    public function sendTemplateMsg()
+    {
+        $access_token = $this->getAccessToken();
+        $url = 'https://api.weixin.qq.com/cgi-bin/message/template/send?access_token='.$access_token;
+        $msg = array(
+            'tourse' => 'oZf3H0f7HNuXj0UZhipDQQW3UA2k',
+            'template_id' => '-CaNsMiU3IdiPQBfIRhx7NtKuC52cLxG2Z3_qV3azrk',
+            'url' => 'https://www.baidu.com',
+            'data' => [
+                'name' => ['value'=>'I am jiaozilgx!','color' => '#173177'],
+                'date' => ['value'=>date('Y-m-d H:i:s'),'color'=>'#173177'],
+            ],
+        );
+        $postJson = json_encode($msg);
+        $res = $this->http_curl($url,'post','json',$postJson);
+        var_dump($res);
+    }
+
+
+
+
+
+
+
 
 
 
