@@ -208,9 +208,26 @@ class WeChat extends Controller
         var_dump($res);
     }
 
+    /**
+     * 网页授权接口
+     */
+    public function useSnsapiBase()
+    {
+        $appid = 'wx13112e8c1539ced8';
+        $redirect_url = urlencode('http://120.79.3.110/thinkphp/public/index.php/index/we_chat/getUserBaseInfo');
+        $url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='.$appid.'&redirect_uri='.$redirect_url.'&response_type=code&scope=snsapi_base&state=123#wechat_redirect';
+        header('location:'.$url);
+    }
 
-
-
+    public function getUserBaseInfo()
+    {
+        $appid = 'wx13112e8c1539ced8';
+        $appsecret = '712ab8464e9a7c915273711b5cdfd625';
+        $code = $_GET['code'];
+        $url = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='.$appid.'&secret='.$appsecret.'&code='.$code.'&grant_type=authorization_code';
+        $res = $this->http_curl($url,'get','json');
+        var_dump($res);
+    }
 
 
 

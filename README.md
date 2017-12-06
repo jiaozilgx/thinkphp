@@ -129,6 +129,8 @@ ThinkPHP® 商标和著作权所有者为上海顶想信息科技有限公司。
 更多细节参阅 [LICENSE.txt](LICENSE.txt)
     
 ## 微信订阅号开发
+* CURL 
+    + 利用URL语法的一个文件传输工具
 * 申请公众平台测试账号
     + 开发者工具->公众平台测试账号->登录
 * 验证
@@ -170,16 +172,40 @@ ThinkPHP® 商标和著作权所有者为上海顶想信息科技有限公司。
     + 开发时用预览接口
     + 开发好后再用根据openID列表群发
     + openID列表就是关注公众号的用户微信号列表
+    + 此方法在运行后才会群发消息
 
+2.步骤：
 
+    + 获取access_token
+    + 设置请求地址url，传输格式为POST
+    + 按规则编写POST传输的数据，先写成数组，在转换成JSON
+    + 使用自定义的http_curl()传输数据并获取结果
+    
+**、网页授权接口**
 
+1.注意：
 
+    + scope=snsapi_base 获取用户的基本信息
+    + scope=snsapi_userinfo 获取用户的详细信息
+    + 回调地址中会包含get传输的code
+    + 用urlencode()将回调地址进行url编码，保护code
 
+2.步骤：
+    
+    + 获取code
+        - 获取appid
+        - 获取回调地址redirect_url，用urlencode()进行URL编码
+        - 设置url，拼接appid,redirect_url,还要设置scope
+        - 用header()跳转到url
+    + 在回调的地址中获取网页授权access_token
+        - 获取get传递的code
+        - 设置url
+        - 用http_curl()来传输，获取结果
 
-
-
-
-
+3.测试此接口(网页授权机制只运行在微信中)
+    
+    + 在“草料二维码生成器”中生成二维码
+    + 调用方法useSnsapiBase()
 
 
 
